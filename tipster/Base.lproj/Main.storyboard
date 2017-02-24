@@ -24,6 +24,9 @@
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="65"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="QqL-PR-OUl"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" misplaced="YES" id="cYb-4X-k02">
                                 <rect key="frame" x="0.0" y="231" width="375" height="436"/>
@@ -65,6 +68,12 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="tipster" id="UV7-mF-UaS"/>
+                    <connections>
+                        <outlet property="billAmountTextField" destination="JFh-eo-nqd" id="mbC-vh-bX0"/>
+                        <outlet property="tipLabel" destination="Bjh-a8-wuH" id="6dE-Wu-OEw"/>
+                        <outlet property="tipPercentSegmentedControl" destination="YpA-6q-AkI" id="7vO-sg-eHu"/>
+                        <outlet property="totalAmountLabel" destination="M2X-BZ-xLi" id="Gjl-o1-2Cv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="by8-Bg-TtL">
