@@ -31,6 +31,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func calculateTip(_ sender: Any) {
+        let tipPercentForIndex = [0: 10, 1: 15, 2: 20]
+        let bill = Double(billAmountTextField.text!) ?? 0
+        let tip = bill * Double(tipPercentForIndex[tipPercentSegmentedControl.selectedSegmentIndex]!) / 100.0
+        let total = bill + tip
+        totalAmountLabel.text = String(format:"%.2f", total);
+        tipLabel.text = String(format:"%.2f", tip);
     }
 }
 
