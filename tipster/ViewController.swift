@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
+    @IBOutlet weak var resultView: UIView!
     
     override func viewDidLoad() {
+        resultView.alpha = 0
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -33,6 +35,14 @@ class ViewController: UIViewController {
     @IBAction func calculateTip(_ sender: Any) {
         let tipPercentForIndex = [0: 10, 1: 15, 2: 20]
         let bill = Double(billAmountTextField.text!) ?? 0
+        UIView.animate(
+            withDuration: 0.3,
+            animations: {
+                if (bill == 0) {
+                    self.resultView.alpha = 0
+                } else {
+                    self.resultView.alpha = 1
+                }})
         let tip = bill * Double(tipPercentForIndex[tipPercentSegmentedControl.selectedSegmentIndex]!) / 100.0
         let total = bill + tip
         totalAmountLabel.text = String(format:"%.2f", total);
