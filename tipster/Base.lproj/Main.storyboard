@@ -70,7 +70,13 @@
                             <outletCollection property="gestureRecognizers" destination="by8-Bg-TtL" appends="YES" id="dwA-lk-Ngd"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="tipster" id="UV7-mF-UaS"/>
+                    <navigationItem key="navigationItem" title="tipster" id="UV7-mF-UaS">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="qmj-qc-gL4">
+                            <connections>
+                                <segue destination="Uig-IT-bdP" kind="push" id="dZ8-8m-Btn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billAmountTextField" destination="JFh-eo-nqd" id="mbC-vh-bX0"/>
                         <outlet property="resultView" destination="cYb-4X-k02" id="d3t-qC-KpM"/>
@@ -86,7 +92,22 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="607.5" y="42.5"/>
+            <point key="canvasLocation" x="569" y="43"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Ld4-ZJ-dg8">
+            <objects>
+                <viewController id="Uig-IT-bdP" customClass="SettingsViewController" customModule="tipster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i3s-cf-v5a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="S39-zR-ob9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjn-Cq-44q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="43"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KT1-DY-YRv">
