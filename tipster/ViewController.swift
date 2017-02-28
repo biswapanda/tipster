@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         resultView.alpha = 0
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        billAmountTextField.becomeFirstResponder()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let tipPercentIndex = UserDefaults.standard.integer(forKey: "default_tip_percent_index")
