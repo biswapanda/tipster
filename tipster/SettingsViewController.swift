@@ -10,10 +10,11 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var tipPercentSegmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let tipPercentIndex = UserDefaults.standard.integer(forKey: "default_tip_percent_index")
+        tipPercentSegmentedControl.selectedSegmentIndex = tipPercentIndex
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +33,8 @@ class SettingsViewController: UIViewController {
     }
     */
 
+    @IBAction func tipPercentChanged(_ sender: Any) {
+        let tipPercentIndex = tipPercentSegmentedControl.selectedSegmentIndex
+        UserDefaults.standard.set(tipPercentIndex, forKey: "default_tip_percent_index")
+    }
 }

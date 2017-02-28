@@ -21,6 +21,11 @@ class ViewController: UIViewController {
         resultView.alpha = 0
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let tipPercentIndex = UserDefaults.standard.integer(forKey: "default_tip_percent_index")
+        tipPercentSegmentedControl.selectedSegmentIndex = tipPercentIndex
+        self.calculateTip(0)
     }
 
     override func didReceiveMemoryWarning() {
