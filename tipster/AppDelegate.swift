@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        maybeClearLastBillAmount()
         return true
     }
 
@@ -31,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        maybeClearLastBillAmount()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -39,8 +41,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        UserDefaults.standard.set(NSDate(), forKey: "last_app_close_dt")
+        UserDefaults.standard.synchronize()
     }
 
-
+    func maybeClearLastBillAmount() {
+        let last_app_close_dt = UserDefaults.standard.object(forKey: "last_app_close_dt")
+        if last_app_close_dt != nil {
+            if Int(NSDate().timeIntervalSince(last_app_close_dt as! Date)) > 60 * 10 {
+                UserDefaults.standard.removeObject(forKey: "last_app_close_dt")
+                UserDefaults.standard.removeObject(forKey: "last_bill_amount")
+                UserDefaults.standard.synchronize()
+            }
+        }
+    }
 }
 

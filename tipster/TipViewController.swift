@@ -31,6 +31,12 @@ class TipViewController: UIViewController {
         super.viewWillAppear(animated)
         let tipPercentIndex = UserDefaults.standard.integer(forKey: "default_tip_percent_index")
         tipPercentSegmentedControl.selectedSegmentIndex = tipPercentIndex
+        let billAmount = UserDefaults.standard.double(forKey: "last_bill_amount")
+        if billAmount != 0 {
+            let billAmountText = String(format:"%.2f", billAmount)
+                .replacingOccurrences(of: ".00", with: "")
+            billAmountTextField.text = billAmountText
+        }
         self.calculateTip(0)
     }
 
@@ -46,6 +52,8 @@ class TipViewController: UIViewController {
     @IBAction func calculateTip(_ sender: Any) {
         let tipPercentForIndex = [0: 10, 1: 15, 2: 20]
         let bill = Double(billAmountTextField.text!) ?? 0
+        UserDefaults.standard.set(bill, forKey:"last_bill_amount")
+        UserDefaults.standard.synchronize()
         UIView.animate(
             withDuration: 0.3,
             animations: {

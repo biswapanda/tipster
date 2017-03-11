@@ -36,5 +36,6 @@ class SettingsViewController: UIViewController {
     @IBAction func tipPercentChanged(_ sender: Any) {
         let tipPercentIndex = tipPercentSegmentedControl.selectedSegmentIndex
         UserDefaults.standard.set(tipPercentIndex, forKey: "default_tip_percent_index")
+        UserDefaults.standard.synchronize()
     }
 }
